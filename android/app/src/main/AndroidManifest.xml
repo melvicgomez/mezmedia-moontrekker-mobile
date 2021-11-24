@@ -1,0 +1,64 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools" package="com.mezmedia.moontrekker">
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.VIBRATE"/>
+
+  <!-- Define ACCESS_FINE_LOCATION if you will use enableHighAccuracy=true  -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+  <!-- Define ACCESS_COARSE_LOCATION if you will use enableHighAccuracy=false  -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+  <queries>
+      <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+  </queries>
+
+  <application android:requestLegacyExternalStorage="true" android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="false" android:theme="@style/SplashTheme">
+
+    <!-- Change the value to true to enable pop-up for in foreground on receiving remote notifications (for prevent duplicating while showing local notifications set this to false) -->
+    <meta-data android:name="com.dieam.reactnativepushnotification.notification_foreground" android:value="false"/>
+    <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="fcm_fallback_notification_channel" tools:replace="android:value"/>
+    <!-- Change the resource name to your App's accent color - or any other color you want -->
+    <meta-data android:name="com.dieam.reactnativepushnotification.notification_color" android:resource="@color/primary_color"/>
+    <!-- or @android:color/{name} to use a standard color -->
+
+    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+    <provider android:authorities="com.facebook.app.FacebookContentProvider2678521005785981" android:name="com.facebook.FacebookContentProvider" android:exported="true" />
+
+    <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
+    <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
+    <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+        <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+      </intent-filter>
+    </receiver>
+
+
+    <service android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService" android:exported="false">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+      </intent-filter>
+    </service>
+
+    <activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+        <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+      </intent-filter>
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="app" android:host="moontrekker" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>

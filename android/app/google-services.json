@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "760580275122",
+    "project_id": "moontrekker-13d8d",
+    "storage_bucket": "moontrekker-13d8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760580275122:android:7738254116bf4b27f602ab",
+        "android_client_info": {
+          "package_name": "com.mezmedia.moontrekker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760580275122-st69amar99966c1esolqi8o8nfe9ojfo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq9gFdDc-NacxgCQzEvCU5Mm5X9W-rVIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760580275122-st69amar99966c1esolqi8o8nfe9ojfo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "760580275122-hj206tci3uqpgatra3lpvkpdk76kq20b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mezmedia.moontrekker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
